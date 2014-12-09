@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'leaflet',
     'homedbapp',
 )
 
@@ -80,8 +81,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
+AUTH_USER_MODEL = 'homedbapp.Shopper'
+
 
 try:
     from local_settings import *

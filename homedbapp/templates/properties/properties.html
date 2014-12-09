@@ -1,0 +1,59 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% leaflet_js %}
+    {% leaflet_css %}
+{% endblock head %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/leaflet.css' %}"/>
+{% endblock header %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div id class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" style="margin-top: 100px">
+                <h1>{{ user.first_name }}'s list of properties</h1>
+
+                <div class="list-group" style="width: 400px">
+                    {% for property in properties %}
+                        <a href="{% url "view_property" property.id %}"
+                           class="list-group-item">{{ property.address }}</a>
+                    {% endfor %}
+                </div>
+                <a href="{% url "new_property" %}" class="btn btn-primary">Add New Property</a>
+            </div>
+            <div class="col-md-5" style="margin-top: 100px">
+                <div id="mymap" style="width: 500px; height: 500px">
+                    {% leaflet_map "mymap" callback="window.map_init_basic" %}
+                    <script type="text/javascript">
+                        var data = JSON.parse("{{ cords_json }}");
+                        function map_init_basic(map) {
+                            var xptr = 0;
+                            var yptr = 1;
+                            var xcor = 37.579327;
+                            var ycor = -122.317347;
+                            map.setView([xcor, ycor], 11);
+                            for (var i = 0; i < data.length / 2; i++) {
+                                marker = new L.marker([data[xptr], data[yptr]]).bindPopup(i).addTo(map);
+                                xptr += 2;
+                                yptr += 2;
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div id class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+{% endblock content %}

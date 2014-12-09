@@ -1,0 +1,123 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% leaflet_js %}
+    {% leaflet_css %}
+{% endblock head %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/leaflet.css' %}"/>
+{% endblock header %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div id class="row">
+            <div class="col-lg-12" style="margin-top: 70px; text-align: center">
+                <h1>{{ property.address }}</h1>
+            </div>
+        </div>
+        <div id class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4" style="margin-top: 30px">
+                <div id="mymap" style="width: 450px; height: 450px">
+                    <script type="text/javascript">
+                        function map_init_basic(map) {
+                            var xcor = {{ x }};
+                            var ycor = {{ y }};
+                            map.setView([xcor, ycor], 15);
+                            L.marker([xcor, ycor]).addTo(map);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+                <img src="/static/media/{{ property.prop_image }}" width="450px" height="450px" style="margin-top: 30px">
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="pcontent">
+                    <h3>Info</h3>
+                    <table class="table" style="width: 450px">
+                        <tbody>
+                        <tr class="active">
+                            <td>Number of bedrooms:</td>
+                            <td>{{ property.numofbdrms }}</td>
+                        </tr>
+                        <tr class="active">
+                            <td>Number of bathrooms:</td>
+                            <td>{{ property.numofbthrms }}</td>
+                        </tr>
+                        <tr class="active">
+                            <td>Property type:</td>
+                            <td>{{ property.propertytype }}</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>Asking price:</td>
+                            <td>${{ property.askingprice }}</td>
+                        <tr class="success">
+                            <td>You've offered:</td>
+                            <td>${{ property.offeredpricce }}</td>
+                        <tr class="warning">
+                            <td>Property sold:</td>
+                            <td>${{ property.soldprice }}</td>
+                        <tr class="danger">
+                            <td>Percentage over:</td>
+                            <td>{{ percentage_over }}%</td>
+                        <tr class="danger">
+                            <td>You were beat by:</td>
+                            <td>${{ beat_by }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="{% url "edit_property" property.id %}" class="btn btn-primary">Edit Property</a>
+                    <a href="{% url "delete_property" property.id %}" class="btn btn-danger">Delete Property</a>
+                    <br>
+                </div>
+            </div>
+                <div class="col-md-5">
+                    <h3>Notes</h3>
+                    <table class="table" style="width: 450px">
+                        <tbody>
+                        <tr class="active">
+                            <td>Roof:</td>
+                            <td>{{ notes.roof }}</td>
+                        </tr>
+                        <tr class="active">
+                            <td>Kitchen:</td>
+                            <td>{{ notes.kitchen }}</td>
+                        </tr>
+                        <tr class="active">
+                            <td>Bathrooms:</td>
+                            <td>{{ notes.bathrooms }}</td>
+                        </tr>
+                        <tr class="active">
+                            <td>Frontyard:</td>
+                            <td>{{ notes.frontyard }}</td>
+                        <tr class="active">
+                            <td>Backyard:</td>
+                            <td>{{ notes.backyard }}</td>
+                        <tr class="active">
+                            <td>Termite estimate:</td>
+                            <td>{{ notes.termite }}</td>
+                        <tr class="active">
+                            <td>Foundation estimate:</td>
+                            <td>{{ notes.foundation }}</td>
+                        <tr class="active">
+                            <td>Neighborhood notes:</td>
+                            <td>{{ notes.neighborhood }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                        <a href="{% url "edit_propertynotes" property.id %}" class="btn btn-primary">Edit Property Notes</a>
+                    {% leaflet_map "mymap" callback="window.map_init_basic" %}
+                </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+{% endblock content %}
