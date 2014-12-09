@@ -1,0 +1,7 @@
+Django==1.7.1
+Pillow==2.6.1
+boto==2.34.0
+django-boto==0.3.8
+django-storages==1.1.8
+psycopg2==2.5.4
+wsgiref==0.1.2
