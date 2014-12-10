@@ -5,7 +5,7 @@
     <div style="margin-left: 100px">
 
     <h3>Edit property</h3>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" class="form" role="form">
     {% csrf_token %}
     {{ form.as_p }}
         <input type="submit" value="Update Property">

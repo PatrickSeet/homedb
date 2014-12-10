@@ -1,9 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from homedbapp.models import Shopper
-from homedbapp.models import Property
-from homedbapp.models import PropertyNotes
+from homedbapp.models import Shopper, Property, PropertyNotes
 
 
 class EmailUserCreationForm(UserCreationForm):

@@ -40,16 +40,6 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Image',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('image', models.ImageField(upload_to=b'prop_images', blank=True)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Property',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -68,6 +58,7 @@ class Migration(migrations.Migration):
                 ('propertytype', models.CharField(max_length=100)),
                 ('xcoordinate', models.FloatField(null=True)),
                 ('ycoordinate', models.FloatField(null=True)),
+                ('image', models.ImageField(default=b'prop_images/house-logo-hi.png', upload_to=b'prop_images', blank=True)),
             ],
             options={
             },
@@ -93,13 +84,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='property',
             name='shopper',
-            field=models.ForeignKey(related_name='shopper', to=settings.AUTH_USER_MODEL),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='image',
-            name='property',
-            field=models.ForeignKey(related_name='pictures', to='homedbapp.Property'),
+            field=models.ManyToManyField(related_name='shopper', to=settings.AUTH_USER_MODEL),
             preserve_default=True,
         ),
     ]

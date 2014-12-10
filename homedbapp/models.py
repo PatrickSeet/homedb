@@ -8,6 +8,7 @@ class Shopper(AbstractUser):
     def __unicode__(self):
         return u'{}'.format(self.username)
 
+
 class Property(models.Model):
     mlsid = models.IntegerField()
     address = models.CharField(max_length=100)
@@ -24,10 +25,12 @@ class Property(models.Model):
     propertytype = models.CharField(max_length=100)
     xcoordinate = models.FloatField(null=True)
     ycoordinate = models.FloatField(null=True)
-    shopper = models.ForeignKey(Shopper, related_name='shopper')
+    image = models.ImageField(upload_to='prop_images', blank=True, default='prop_images/house-logo-hi.png')
+    shopper = models.ManyToManyField(Shopper, related_name='shopper')
 
     def __unicode__(self):
         return u'{}'.format(self.address)
+
 
 class PropertyNotes(models.Model):
     roof = models.CharField(max_length=100)
@@ -39,13 +42,6 @@ class PropertyNotes(models.Model):
     foundation  = models.CharField(max_length=100)
     neighborhood  = models.CharField(max_length=100)
     property = models.OneToOneField(Property, primary_key=True)
-
-    def __unicode__(self):
-        return u'{}'.format(self.property)
-
-class Image(models.Model):
-    image = models.ImageField(upload_to='prop_images', blank=True)
-    property = models.ForeignKey(Property, related_name="pictures")
 
     def __unicode__(self):
         return u'{}'.format(self.property)

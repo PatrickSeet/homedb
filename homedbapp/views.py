@@ -133,26 +133,35 @@ def edit_property(request, property_id):
 
 @login_required()
 def new_propertynotes(request):
+
+    #initialize the two forms with their own prefixes
+    # notesform = PropertyNotesForm(prefix='notes')
+    # imageform = ImageForm(prefix='pix')
+
     # If the user is submitting the form
     if request.method == "POST":
 
         # Get the instance of the form filled with the submitted data
         form = PropertyNotesForm(request.POST)
+        # notesform = PropertyNotesForm(request.POST, prefix='notes')
+        # imageform = ImageForm(request.POST, prefix='pix')
 
         # Django will check the form's validity for you
         if form.is_valid():
-
             # Saving the form will create a new Genre object
-            if form.save():
-                # After saving, redirect the user back to the index page
-                return redirect("/properties")
+            form.save()
+        # elif imageform.is_valid():
+        #         imageform.save()
+
+        # After saving, redirect the user back to the index page
+        return redirect("/properties")
 
     # Else if the user is looking at the form page
     else:
         form = PropertyNotesForm()
-    data = {'form': form}
+        # imageform = ImageForm(prefix='pix')
 
-    return render(request, "properties/add_propertynotes.html", data)
+    return render(request, "properties/add_propertynotes.html", {'form':form})
 
 
 @login_required()
