@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link href="{% static 'css/homedb.css' %}" rel="stylesheet">
     <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
-{% endblock header %}</header>
 
+{% endblock header %}</header>
+<body>
 {#<body background="{% static 'img/graphy.png' %}">#}
 <div class="bs-example">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,12 +70,14 @@
 </div>
 {% block content %}{% endblock content %}
 <!-- Footer -->
-<div id="footer">
+<footer class="footer">
+    <div class="container" id="ftr">
         <p class="text-muted" style="text-align: center">
             Copyright &copy; <a href="https://github.com/PatrickSeet">Patrick Seet</a> 2014
         </p>
-    <!-- /.container -->
-</div>
+        <!-- /.container -->
+    </div>
+</footer>
 <!-- jQuery Version 1.11.0 -->
 <script src="{% static 'js/jquery-1.11.0.js' %}"></script>
 
