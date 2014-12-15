@@ -1,0 +1,2 @@
+The idea of this project came from my brother's experience on buying a home in the Bay Area. He has made over 15 offers and yet to secure a home. After a few offers, it is getting challenging to write offers based on numbers instead of emotions.
+Value of homes based on location, school district, condition of kitchen, number of bathrooms, roof condition, termite report, etc. homedb keeps track of all these attributes so buyer can make better decisions on how much to offer over asking price.
