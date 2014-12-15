@@ -86,35 +86,35 @@
                         <tbody>
                         <tr class="active">
                             <td>Roof:</td>
-                            <td>{{ notes.roof }}</td>
+                            <td>{{ property.roof }}</td>
                         </tr>
                         <tr class="active">
                             <td>Kitchen:</td>
-                            <td>{{ notes.kitchen }}</td>
+                            <td>{{ property.kitchen }}</td>
                         </tr>
                         <tr class="active">
                             <td>Bathrooms:</td>
-                            <td>{{ notes.bathrooms }}</td>
+                            <td>{{ property.bathrooms }}</td>
                         </tr>
                         <tr class="active">
                             <td>Frontyard:</td>
-                            <td>{{ notes.frontyard }}</td>
+                            <td>{{ property.frontyard }}</td>
                         <tr class="active">
                             <td>Backyard:</td>
-                            <td>{{ notes.backyard }}</td>
+                            <td>{{ property.backyard }}</td>
                         <tr class="active">
                             <td>Termite estimate:</td>
-                            <td>{{ notes.termite }}</td>
+                            <td>{{ property.termite }}</td>
                         <tr class="active">
                             <td>Foundation estimate:</td>
-                            <td>{{ notes.foundation }}</td>
+                            <td>{{ property.foundation }}</td>
                         <tr class="active">
                             <td>Neighborhood notes:</td>
-                            <td>{{ notes.neighborhood }}</td>
+                            <td>{{ property.neighborhood }}</td>
                         </tr>
                         </tbody>
                     </table>
-                        <a href="{% url "edit_propertynotes" property.id %}" class="btn btn-primary">Edit Property Notes</a>
+
                     {% leaflet_map "mymap" callback="window.map_init_basic" %}
                 </div>
             <div class="col-md-1"></div>

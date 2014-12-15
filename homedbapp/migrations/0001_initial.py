@@ -53,20 +53,9 @@ class Migration(migrations.Migration):
                 ('askingprice', models.IntegerField()),
                 ('offeredpricce', models.IntegerField()),
                 ('soldprice', models.IntegerField()),
-                ('frontyard', models.BooleanField(default=False)),
-                ('backyard', models.BooleanField(default=False)),
                 ('propertytype', models.CharField(max_length=100)),
                 ('xcoordinate', models.FloatField(null=True)),
                 ('ycoordinate', models.FloatField(null=True)),
-                ('image', models.ImageField(default=b'prop_images/house-logo-hi.png', upload_to=b'prop_images', blank=True)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='PropertyNotes',
-            fields=[
                 ('roof', models.CharField(max_length=100)),
                 ('kitchen', models.CharField(max_length=100)),
                 ('bathrooms', models.CharField(max_length=100)),
@@ -75,16 +64,11 @@ class Migration(migrations.Migration):
                 ('termite', models.CharField(max_length=100)),
                 ('foundation', models.CharField(max_length=100)),
                 ('neighborhood', models.CharField(max_length=100)),
-                ('property', models.OneToOneField(primary_key=True, serialize=False, to='homedbapp.Property')),
+                ('image', models.ImageField(default=b'prop_images/house-logo-hi.png', upload_to=b'prop_images', blank=True)),
+                ('shopper', models.ManyToManyField(related_name='shopper', to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='property',
-            name='shopper',
-            field=models.ManyToManyField(related_name='shopper', to=settings.AUTH_USER_MODEL),
-            preserve_default=True,
         ),
     ]

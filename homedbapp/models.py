@@ -20,19 +20,9 @@ class Property(models.Model):
     askingprice = models.IntegerField()
     offeredpricce = models.IntegerField()
     soldprice = models.IntegerField()
-    frontyard = models.BooleanField(default=False)
-    backyard = models.BooleanField(default=False)
     propertytype = models.CharField(max_length=100)
     xcoordinate = models.FloatField(null=True)
     ycoordinate = models.FloatField(null=True)
-    image = models.ImageField(upload_to='prop_images', blank=True, default='prop_images/house-logo-hi.png')
-    shopper = models.ManyToManyField(Shopper, related_name='shopper')
-
-    def __unicode__(self):
-        return u'{}'.format(self.address)
-
-
-class PropertyNotes(models.Model):
     roof = models.CharField(max_length=100)
     kitchen  = models.CharField(max_length=100)
     bathrooms  = models.CharField(max_length=100)
@@ -41,7 +31,8 @@ class PropertyNotes(models.Model):
     termite  = models.CharField(max_length=100)
     foundation  = models.CharField(max_length=100)
     neighborhood  = models.CharField(max_length=100)
-    property = models.OneToOneField(Property, primary_key=True)
+    image = models.ImageField(upload_to='prop_images', blank=True, default='prop_images/house-logo-hi.png')
+    shopper = models.ManyToManyField(Shopper, related_name='shopper')
 
     def __unicode__(self):
-        return u'{}'.format(self.property)
+        return u'{}'.format(self.address)

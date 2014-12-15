@@ -1,0 +1,29 @@
+.text_box {
+   width: 300px;
+   height: 8px;
+   border: solid 1px #DDDDDD;
+   padding: 15px;
+   border-radius: 4px;
+   font-size: 16px;
+   background-color: #FFFFFF;
+   outline: none;
+   color: #474747;
+   /*margin: 20px;*/
+  }
+.text_box:hover  {
+   border: 1px solid #FF9500;
+  }
+.text_box:focus  {
+   border: solid 1px #4DB35C;
+   /*box-shadow: inset 0px 1px 2px 0px #9C9C9C;*/
+  }
+.text_box:active  {
+   border: solid 1px #FCDA2D;
+  }
+
+.form_label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #aaa;
+    font-size: 16px;
+    padding-top: 15px;
+}

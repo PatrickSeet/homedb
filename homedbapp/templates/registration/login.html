@@ -4,11 +4,10 @@
 {% block content %}
     <div  style="margin-left: 100px">
 
-    <form method="post" action=".">
+    <form method="post" action="." style="margin-top: 100px">
         {% csrf_token %}
         {{ form.as_p }}
-
-        <input type="submit" value="Log in">
+            <input type="submit" class="btn btn-primary" value="Login">
     </form>
 
     <p>Not member? <a href="{% url 'register' %}">Register!</a></p>
