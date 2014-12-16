@@ -31,7 +31,7 @@ class Property(models.Model):
     termite  = models.CharField(max_length=100)
     foundation  = models.CharField(max_length=100)
     neighborhood  = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='prop_images', blank=True, default='prop_images/house-logo-hi.png')
+    image = models.ImageField(upload_to='prop_images', blank=True, null=True, default='prop_images/house-logo-hi.png')
     shopper = models.ManyToManyField(Shopper, related_name='shopper')
 
     def __unicode__(self):

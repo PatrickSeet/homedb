@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>{% block head %}
     <title>{% block title %}Hometracker{% endblock title %}</title>
 {% endblock head %}</head>
@@ -72,10 +72,11 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container" id="ftr">
-        <p class="text-muted" style="text-align: center">
-            Copyright &copy; <a href="https://github.com/PatrickSeet">Patrick Seet</a> 2014
-        </p>
-        <!-- /.container -->
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <p class="text-muted" style="text-align: center">
+                Copyright &copy; <a href="https://github.com/PatrickSeet">Patrick Seet</a> 2014
+            </p>
+        </nav>
     </div>
 </footer>
 <!-- jQuery Version 1.11.0 -->
