@@ -1,0 +1,7 @@
+---
+
+db_name: "homedb"
+db_user: "homedb"
+db_password: myawesomepassword
+nginx_server_name: ec2-54-149-139-31.us-west-2.compute.amazonaws.com
+django_settings_file: homedb.settings
