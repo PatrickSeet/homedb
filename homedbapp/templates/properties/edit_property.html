@@ -2,13 +2,71 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div style="margin-left: 100px">
+    <div style="margin-left: 100px; margin-top: 100px">
 
-    <h3>Edit property</h3>
-    <form method="post" enctype="multipart/form-data" class="form" role="form">
-    {% csrf_token %}
-    {{ form.as_p }}
-        <input type="submit" value="Update Property">
-    </form>
-        </div>
+        <h1>Edit property</h1>
+        <form method="post" enctype="multipart/form-data" class="form" role="form">
+            {% csrf_token %}
+            <div class="table-responsive" id="no-more-tables">
+                <table class="table">
+                    <tr><td>{{ form.mlsid.label_tag }}</td>
+                        <td>{{ form.mlsid }}</td>
+                        <td>{{ form.roof.label_tag }}</td>
+                        <td>{{ form.roof }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.address.label_tag }}</td>
+                        <td>{{ form.address }}</td>
+                        <td>{{ form.kitchen.label_tag }}</td>
+                        <td>{{ form.kitchen }}</td>
+                    </tr>
+                    <tr><td>{{ form.numofbdrms.label_tag }}</td>
+                        <td>{{ form.numofbdrms }}</td>
+                        <td>{{ form.bathrooms.label_tag }}</td>
+                        <td>{{ form.bathrooms }}</td>
+                    </tr>
+                    <tr><td>{{ form.numofbthrms.label_tag }}</td>
+                        <td>{{ form.numofbthrms }}</td>
+                        <td>{{ form.frontyard.label_tag }}</td>
+                        <td>{{ form.frontyard }}</td>
+                    </tr>
+                    <tr><td>{{ form.numofmaster.label_tag }}</td>
+                        <td>{{ form.numofmaster }}</td>
+                        <td>{{ form.backyard.label_tag }}</td>
+                        <td>{{ form.backyard }}</td>
+                    </tr>
+                    <tr><td>{{ form.sqfootage.label_tag }}</td>
+                        <td>{{ form.sqfootage }}</td>
+                        <td>{{ form.termite.label_tag }}</td>
+                        <td>{{ form.termite }}</td>
+                    </tr>
+                    <tr><td>{{ form.lotsize.label_tag }}</td>
+                        <td>{{ form.lotsize }}</td>
+                        <td>{{ form.foundation.label_tag }}</td>
+                        <td>{{ form.foundation }}</td>
+                    </tr>
+                    <tr><td>{{ form.askingprice.label_tag }}</td>
+                        <td>{{ form.askingprice }}</td>
+                        <td>{{ form.neighborhood.label_tag }}</td>
+                        <td>{{ form.neighborhood }}</td>
+                    </tr>
+                    <tr><td>{{ form.offeredpricce.label_tag }}</td>
+                        <td>{{ form.offeredpricce }}</td>
+                        <td>{{ form.soldprice.label_tag }}</td>
+                        <td>{{ form.soldprice }}</td>
+                    </tr>
+                    <tr><td>{{ form.propertytype.label_tag }}</td>
+                        <td>{{ form.propertytype }}</td>
+                        <td>{{ form.shopper.label_tag }}</td>
+                        <td>{{ form.shopper }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.image.label_tag }}</td>
+                        <td>{{ form.image }}</td>
+                    </tr>
+                </table>
+                <input type="submit" class="btn btn-primary" value="Edit Property">
+            </div>
+        </form>
+    </div>
 {% endblock content %}
