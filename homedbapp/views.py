@@ -69,6 +69,7 @@ def properties(request):
 @login_required()
 def new_property(request):
 
+    s3_url = "https://homedbbucket.s3.amazonaws.com/"
     # If the user is submitting the form
     if request.method == "POST":
 
@@ -100,7 +101,7 @@ def new_property(request):
         form = PropertyForm()
         print "post failed"
 
-    data = {'form': form}
+    data = {'form': form, 's3_url': s3_url}
 
     return render(request, "properties/add_property.html", data)
 
@@ -108,6 +109,7 @@ def new_property(request):
 @login_required()
 def view_property(request, property_id):
 
+    s3_url = "https://homedbbucket.s3.amazonaws.com/"
     property = Property.objects.get(id=property_id)
     percentage_over = round((float(property.soldprice - property.askingprice) / float(property.askingprice)) * 100)
     beat_by = property.soldprice - property.offeredpricce
@@ -115,7 +117,7 @@ def view_property(request, property_id):
     y = property.ycoordinate
 
     data = {"property": property, "percentage_over": percentage_over, "beat_by": beat_by,
-            "x": x, "y": y}
+            "x": x, "y": y, 's3_url': s3_url}
 
     return render(request, "properties/view_property.html", data)
 
@@ -123,6 +125,7 @@ def view_property(request, property_id):
 @login_required()
 def edit_property(request, property_id):
 
+    s3_url = "https://homedbbucket.s3.amazonaws.com/"
     # Similar to the the detail view, we have to find the existing genre we are editing
     property = Property.objects.get(id=property_id)
 
@@ -140,7 +143,7 @@ def edit_property(request, property_id):
         # We prefill the form by passing 'instance', which is the specific
         # object we are editing
         form = PropertyForm(instance=property)
-    data = {"property": property, "form": form}
+    data = {"property": property, "form": form, 's3_url': s3_url}
     return render(request, "properties/edit_property.html", data)
 
 @login_required()
