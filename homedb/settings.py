@@ -16,6 +16,18 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 
+
+# AWS_ACCESS_KEY_ID = 'AKIAIBMM7O7ZGUEOFJ6Q'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'homedbbucket'
+# STATICFILES_STORAGE = 'homedb.s3utils.StaticRootS3BotoStorage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# S3_URL = '//{}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
+# MEDIA_URL = S3_URL + "media/"
+# STATIC_URL = S3_URL + "static/"
+# ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -41,6 +53,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'leaflet',
     'homedbapp',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,6 +105,24 @@ AUTH_USER_MODEL = 'homedbapp.Shopper'
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'homedbbucket'
+STATICFILES_STORAGE = 'homedb.s3utils.StaticRootS3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+S3_URL = '//{}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
+
+MEDIA_URL = S3_URL + "media/"
+STATIC_URL = S3_URL + "static/"
+ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 
 try:
     from local_settings import *
