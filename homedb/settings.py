@@ -16,18 +16,6 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 
-
-# AWS_ACCESS_KEY_ID = 'AKIAIBMM7O7ZGUEOFJ6Q'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'homedbbucket'
-# STATICFILES_STORAGE = 'homedb.s3utils.StaticRootS3BotoStorage'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# S3_URL = '//{}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
-# MEDIA_URL = S3_URL + "media/"
-# STATIC_URL = S3_URL + "static/"
-# ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
