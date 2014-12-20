@@ -5,6 +5,7 @@
     <div style="margin-left: 100px">
         <form method="post" action="." style="margin-top: 100px">
             {% csrf_token %}
+            <div class="table-responsive" id="no-more-tables">
             <table class="table">
                 {% for field in form %}
                     <tr><td style="padding: 5px;" width="100" align="right" valign="top">{{ field.label_tag }}</td>
@@ -12,6 +13,7 @@
                 {% endfor %}
             </table>
             <input type="submit" class="btn btn-primary" value="Register">
+            </div>
         </form>
     </div>
 {% endblock %}
