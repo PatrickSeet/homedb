@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.conf import settings
+from homedb.settings import GOOGLE_API_KEY
 from homedbapp.forms import EmailUserCreationForm, PropertyForm
 from homedbapp.models import Property, Shopper
 from geolocation.google_maps import GoogleMaps
@@ -26,9 +27,7 @@ def register(request):
     else:
         form = EmailUserCreationForm()
 
-    return render(request, "registration/register.html", {
-        'form': form,
-    })
+    return render(request, "registration/register.html", {'form': form})
 
 
 def faq(request):
@@ -40,6 +39,8 @@ def index(request):
 
     return render(request, 'index.html')
 
+def test(request):
+    return render(request, 'test.html')
 
 @login_required
 def profile(request):
@@ -69,6 +70,8 @@ def properties(request):
 @login_required()
 def new_property(request):
 
+    print "key is: " + GOOGLE_API_KEY
+
     s3_url = "https://homedbbucket.s3.amazonaws.com/"
     # If the user is submitting the form
     if request.method == "POST":
@@ -83,7 +86,10 @@ def new_property(request):
                 data = form.cleaned_data
                 #using property address to lat and lng info from google map, then update table
                 property_address = data['address']
-                google_maps = GoogleMaps(api_key='AIzaSyDlHBtlOb1-JpUPZ8CHAZqaNha6Uw_l_ow')
+                #google_maps = GoogleMaps(api_key='AIzaSyDlHBtlOb1-JpUPZ8CHAZqaNha6Uw_l_ow')
+                #google_maps = GoogleMaps(api_key='AIzaSyCsAx9ai6tVkHHxnKDvHGv1ZdcfnMP6MlU')
+                #AIzaSyCsAx9ai6tVkHHxnKDvHGv1ZdcfnMP6MlU
+                google_maps = GoogleMaps(api_key=GOOGLE_API_KEY)
                 location_info = google_maps.query(location=property_address)
                 location_info = location_info.first()
                 Property.objects.filter(address=property_address).update(xcoordinate=location_info.lat)
@@ -94,7 +100,7 @@ def new_property(request):
             else:
                 print "not saved"
         else:
-            print "not valid"
+            print "form not valid"
 
     # Else if the user is looking at the form page
     else:

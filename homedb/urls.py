@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
  url(r'^admin/', include(admin.site.urls)),
+    url(r'^test/$', 'homedbapp.views.test', name='test'),
     url(r'^index/$', 'homedbapp.views.index', name='index'),
     url(r'^profile/$', 'homedbapp.views.profile', name='profile'),
     url(r'^property/(?P<property_id>\w+)/edit/$', 'homedbapp.views.edit_property', name='edit_property'),
