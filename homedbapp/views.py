@@ -102,6 +102,7 @@ def new_property(request):
         form = PropertyForm()
         print "post failed"
 
+    #S3 bucket
     data = {'form': form, 's3_url': s3_url}
 
     return render(request, "properties/add_property.html", data)
