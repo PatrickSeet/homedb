@@ -109,7 +109,6 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_PORT = 587
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
-#GOOGLE_API_KEY = os.environ.get('gkey', 'AIzaSyCsAx9ai6tVkHHxnKDvHGv1ZdcfnMP6MlU')
 ZILLOW_KEY = os.environ.get('ZILLOW_KEY')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

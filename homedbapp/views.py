@@ -70,8 +70,6 @@ def properties(request):
 @login_required()
 def new_property(request):
 
-    print "key is: " + GOOGLE_API_KEY
-
     s3_url = "https://homedbbucket.s3.amazonaws.com/"
     # If the user is submitting the form
     if request.method == "POST":
@@ -86,9 +84,6 @@ def new_property(request):
                 data = form.cleaned_data
                 #using property address to lat and lng info from google map, then update table
                 property_address = data['address']
-                #google_maps = GoogleMaps(api_key='AIzaSyDlHBtlOb1-JpUPZ8CHAZqaNha6Uw_l_ow')
-                #google_maps = GoogleMaps(api_key='AIzaSyCsAx9ai6tVkHHxnKDvHGv1ZdcfnMP6MlU')
-                #AIzaSyCsAx9ai6tVkHHxnKDvHGv1ZdcfnMP6MlU
                 google_maps = GoogleMaps(api_key=GOOGLE_API_KEY)
                 location_info = google_maps.query(location=property_address)
                 location_info = location_info.first()
